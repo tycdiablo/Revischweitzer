@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revischweitzer - Colegio Dr. Alberto Schweitzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav id="sticky-navbar">
+        <div class="navbar-content">
+            <a href="#home" class="navbar-logo-link">
+                <img src="https://i.imgur.com/abMVZyy.png" alt="Logo Schweitzer" class="navbar-logo">
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Ediciones</a></li> <li><a href="#about-magazine-section">Acerca de la revista</a></li>
+                <li><a href="https://schweitzer.edu.ar/" target="_blank">Sitio web del colegio</a></li>
+                <li><a href="#social-media-section">Redes Sociales</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Revischweitzer</h1>
+    </header>
+
+    <main>
+        <section id="home" class="year-selector-section active-section">
+            <h2>Selecciona una Edición</h2> <label for="year-select">Selecciona un año:</label>
+            <select id="year-select">
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+            </select>
+            <div class="magazine-display-section">
+                <iframe id="magazine-frame" src="" frameborder="0"></iframe>
+                <img id="magazine-image" src="" alt="Portada de la revista seleccionada" style="display: none;">
+            </div>
+        </section>
+
+        <section id="ediciones-section" class="content-section hidden-section">
+            <h2>Todas las Ediciones</h2>
+            <div class="editions-grid">
+                <div class="edition-item">
+                    <a href="https://online.publuu.com/907362/1986623/page/1" target="_blank">
+                        <img src="https://i.imgur.com/GjYb4XL.jpeg" alt="Portada Revista 2024">
+                        <p class="edition-year">2024</p>
+                    </a>
+                </div>
+                <div class="edition-item">
+                    <a href="URL_DE_LA_REVISTA_2025_COMPLETA_AQUI" target="_blank">
+                        <img src="https://i.imgur.com/dBnwnal.jpeg" alt="Portada Revista 2025">
+                        <p class="edition-year">2025</p>
+                    </a>
+                </div>
+                </div>
+        </section>
+
+        <section id="about-magazine-section" class="content-section hidden-section">
+            <h2>Acerca de la Revista</h2>
+            <p>Esta revista fusiona distintos relatos que crearon los/as estudiantes del colegio Dr. Alberto Schweitzer, con el fin de que haya un ambiente apto para expresarse libremente. Esta revista es muy importante para la representación de los/as estudiantes que forman parte de esta institución. Cada uno de ellos/as tienen la libertad de mostrar sus creaciones y trabajos, y esta revista es el lugar ideal para manifestarse. Todo esto nos transmite una sensación de pertenencia y permite identificarnos con el contenido de este proyecto y lo que representamos formando parte de esta institución.</p>
+            <p>La revista institucional «ReviSchweitzer» es un trabajo colaborativo realizado en 3ero año de Nivel Secundario, incentivado por la profesora Angie Diz. El proyecto intenta reunir producciones auténticas que refuercen el sentido de identidad institucional, ¡esperamos que disfruten de la lectura!</p>
+            </section>
+
+        <section id="social-media-section" class="content-section hidden-section">
+            <h2>Nuestras Redes Sociales</h2>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/schweitzerMdP/" target="_blank" class="social-icon-item">
+                    <i class="fab fa-instagram"></i>
+                    <p>Instagram</p>
+                </a>
+                <a href="https://www.facebook.com/SchweitzerMdP/" target="_blank" class="social-icon-item">
+                    <i class="fab fa-facebook"></i>
+                    <p>Facebook</p>
+                </a>
+                </div>
+        </section>
+    </main>
+
+    <footer id="main-footer">
+        <p>&copy; 2025 Revischweitzer - Colegio Dr. Alberto Schweitzer</p>
+        <p>Avellaneda 3755, Buenos Aires</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/SchweitzerMdP/" target="_blank" aria-label="Facebook del Colegio"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/schweitzermdp/" target="_blank" aria-label="Instagram del Colegio"><i class="fab fa-instagram"></i></a>
+            <a href="https://schweitzer.edu.ar/" target="_blank" aria-label="Sitio web del Colegio"><i class="fas fa-globe"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

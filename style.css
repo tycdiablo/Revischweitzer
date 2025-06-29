@@ -1,0 +1,436 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #fcfbfb;
+    color: #333;
+    line-height: 1.6;
+    /* padding-top se ajustará por JS cuando la navbar se fije */
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap'); */
+
+header {
+    background-color: #831e2a;
+    color: #fcfbfb;
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 100;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Menú de navegación flotante --- */
+#sticky-navbar {
+    background-color: #fcfbfb;
+    color: #831e2a;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 2px solid #831e2a;
+    box-sizing: border-box;
+}
+
+#sticky-navbar.fixed {
+    padding: 8px 20px;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.navbar-logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    order: 1;
+}
+
+.navbar-logo {
+    height: 40px; /* Tamaño del logo cuando no está fijo (normal) */
+    margin-right: 15px;
+    transition: height 0.3s ease-in-out;
+}
+
+#sticky-navbar.fixed .navbar-logo {
+    height: 60px; /* ¡LOGO MÁS GRANDE CUANDO ESTÁ FIJO! */
+    margin-right: 15px;
+}
+
+.menu-toggle {
+    font-size: 1.8em;
+    cursor: pointer;
+    display: none;
+    order: 2;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    order: 3;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #831e2a;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #831e2a;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #a03040;
+}
+
+/* --- Contenido principal y secciones --- */
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 25px;
+}
+
+section {
+    background-color: #fcfbfb;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #831e2a;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Ocultar secciones por defecto */
+.content-section {
+    display: none;
+}
+
+.content-section.active-section {
+    display: block;
+}
+
+.year-selector-section {
+    text-align: center;
+}
+
+.year-selector-section label {
+    font-size: 1.3em;
+    margin-right: 15px;
+    color: #831e2a;
+    font-weight: bold;
+}
+
+.year-selector-section select {
+    padding: 10px 15px;
+    font-size: 1.1em;
+    border: 2px solid #831e2a;
+    border-radius: 7px;
+    background-color: #fcfbfb;
+    color: #831e2a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.year-selector-section select:hover {
+    background-color: #fff0f0;
+    box-shadow: 0 0 8px rgba(131, 30, 42, 0.3);
+}
+
+.magazine-display-section {
+    text-align: center;
+    margin-top: 30px;
+    /* Añadir display flex para centrar mejor el iframe o la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#magazine-frame {
+    width: 100%;
+    height: 800px; /* Altura del iframe */
+    border: 2px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    display: block; /* Asegura que el iframe se comporte como un bloque */
+}
+
+/* Estilos para la imagen de la revista (si se muestra en lugar del iframe) */
+#magazine-image {
+    max-width: 100%; /* Asegura que no se desborde */
+    height: auto; /* Mantiene la proporción */
+    /* Puedes establecer un max-height si quieres controlar su altura máxima sin cortar la imagen */
+    max-height: 700px; /* O el valor que prefieras para controlar el tamaño visual */
+    display: block; /* Para centrarla si es necesario y eliminar espacios extra */
+    margin: 0 auto; /* Para centrar la imagen horizontalmente */
+    border: 2px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin ser cortada */
+}
+
+
+/* --- Estilos para la sección "Ediciones" --- */
+.editions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.edition-item {
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edition-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.edition-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Para que todo el item sea clickeable */
+}
+
+.edition-item img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edition-item .edition-year {
+    font-weight: bold;
+    color: #831e2a;
+    font-size: 1.1em;
+}
+
+/* --- Estilos para la sección "Redes Sociales" --- */
+.social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.social-icon-item {
+    text-align: center;
+    text-decoration: none;
+    color: #831e2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icon-item i {
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+
+.social-icon-item p {
+    font-weight: bold;
+    margin: 0;
+}
+
+.social-icon-item:hover {
+    color: #a03040;
+    transform: translateY(-5px);
+}
+
+/* --- Pie de página --- */
+footer {
+    background-color: #831e2a;
+    color: #fcfbfb;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #fcfbfb;
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #dcdcdc;
+}
+
+/* --- Responsive Design (Ajustes para móvil) --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3em;
+    }
+
+    main {
+        padding: 0 15px;
+    }
+
+    #magazine-frame {
+        height: 600px;
+    }
+
+    #magazine-image {
+        max-height: 500px; /* Ajuste para móviles */
+    }
+
+    .navbar-content {
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+
+    .navbar-logo-link {
+        order: 1;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px; /* Ajuste para que se vea debajo del logo más grande */
+        right: 0;
+        background-color: #fcfbfb;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        border-top: 1px solid #eee;
+        padding-bottom: 10px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 15px 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    .navbar-logo {
+        height: 50px; /* Ajuste del logo en móvil para que sea más grande */
+    }
+
+    .editions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .social-grid {
+        gap: 20px;
+    }
+
+    .social-icon-item i {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    #magazine-frame {
+        height: 400px;
+    }
+
+    #magazine-image {
+        max-height: 350px; /* Ajuste más pequeño para móviles muy chicos */
+    }
+
+    .year-selector-section label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .navbar-logo {
+        height: 40px; /* Ajuste más pequeño para móviles muy chicos */
+    }
+}
